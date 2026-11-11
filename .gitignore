@@ -1,0 +1,20 @@
+# secrets
+.env
+.env.*
+.claude/settings.local.json
+
+# dependencies / build
+node_modules/
+.expo/
+dist/
+ios/
+android/
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# misc
+.DS_Store
+coverage/
