@@ -8,7 +8,7 @@
 - [ ] ワイヤーフレーム（S-01〜S-10）
 
 ## フェーズ2: 土台づくり
-- [ ] Expo プロジェクト作成（TypeScript strict、Expo Router、lint / typecheck / test スクリプト）
+- [x] Expo プロジェクト作成（TypeScript strict、Expo Router、lint / typecheck / test スクリプト）
 - [ ] `src/lib/date.ts`: 午前4時区切りの entry_date と締め判定（境界値テストつき）
 - [ ] `src/constants/`: 文字数上限・締め時刻・ポイント数などの定数
 - [ ] Supabase プロジェクト作成とマイグレーション適用（ユーザー作業 + 手順書）

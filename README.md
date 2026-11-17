@@ -22,5 +22,8 @@ Expo（React Native）/ TypeScript / Supabase（PostgreSQL, Auth, Storage）/ Sw
 ```bash
 cp example.env .env   # Supabase の URL と anon key を記入
 npm install
-npx expo run:ios      # または npx expo run:android
+npx expo run:ios      # または npx expo run:android（Android Studio が必要）
+
+# 確認
+npm run lint && npm run typecheck && npm test
 ```
