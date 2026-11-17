@@ -37,7 +37,51 @@
 - 備考: `.env.*` は settings.json で読み取り禁止のため、この名前にしている
 
 ### .gitignore
-- 役割: `.env`、鍵ファイル（*.p8 / *.jks / *.mobileprovision）、node_modules、ios/ android/ などを除外
+- 役割: `.env`、鍵ファイル（*.p8 / *.jks / *.pem / *.mobileprovision）、node_modules、ルートの /ios /android、expo-env.d.ts などを除外
+
+## アプリ本体（フェーズ2-1: Expo プロジェクト）
+
+### package.json
+- 役割: 依存関係とスクリプト。name `nicky`、`main: expo-router/entry`、jest preset `jest-expo`
+- スクリプト: start / ios（expo run:ios）/ android（expo run:android）/ lint（eslint .）/ typecheck（tsc --noEmit）/ test（jest）
+- 依存: Expo SDK 58、expo-router、react-dom（react と同じ 19.3.0 に固定。peer 解決用）ほか
+- 参照元: npm、Expo CLI、Jest
+
+### package-lock.json
+- 役割: npm install が自動生成する依存バージョンの固定（手で編集しない）
+
+### app.json
+- 役割: Expo アプリ設定。name `Nicky`、scheme `nicky`（F-02 の招待リンク用）、bundleIdentifier / package は `com.koresawa03.nicky`、plugins に expo-router
+- 参照元: Expo CLI、assets/
+
+### tsconfig.json
+- 役割: TypeScript 設定。`expo/tsconfig.base` を継承し strict、`types: ["jest"]`、`@/*` → `src/*`
+
+### eslint.config.js
+- 役割: ESLint 設定。`eslint-config-expo/flat` を使用。ios/ android/ supabase/ node_modules/ .expo/ dist/ を対象外
+
+### assets/
+- 役割: テンプレートのアイコン・スプラッシュ画像（icon / splash-icon / favicon / android-icon-foreground・background・monochrome の6枚。後で差し替え）
+- 参照元: app.json
+
+### app/_layout.tsx
+- 役割: Expo Router のルートレイアウト（`Stack`）
+- 依存: expo-router
+
+### app/index.tsx
+- 役割: 仮のホーム画面（S-xx、フェーズ2で置き換え）。「Nicky」と表示するだけ
+- 参照元: __tests__/app/index.test.tsx
+
+### __tests__/app/index.test.tsx
+- 役割: ホーム画面が「Nicky」を表示するスモークテスト（RNTL）。app/ 配下はすべてルート扱いになるため、テストはリポジトリ直下の __tests__/ に置く
+- 依存: @testing-library/react-native、app/index.tsx
+
+### src/features/index.ts、src/lib/index.ts、src/db/index.ts、src/constants/index.ts
+- 役割: フォルダ構成用の空の index（`export {};` と役割コメント）。中身は F-xx の実装から追加
+- 参照元: なし（今のところ）
+
+### modules/.gitkeep
+- 役割: 自作ネイティブモジュール（Swift / Kotlin）置き場。空フォルダを残すためのファイル
 
 ## .claude/
 

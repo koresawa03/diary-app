@@ -7,14 +7,20 @@
 node_modules/
 .expo/
 dist/
-ios/
-android/
+/ios
+/android
 *.jks
 *.p8
 *.p12
 *.key
 *.mobileprovision
+*.pem
 
 # misc
 .DS_Store
 coverage/
+expo-env.d.ts
+web-build/
+.kotlin/
+*.tsbuildinfo
+.metro-health-check*
